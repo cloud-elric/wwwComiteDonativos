@@ -403,6 +403,7 @@ class EntUsuarios extends \yii\db\ActiveRecord implements IdentityInterface
 		$user->setPassword ( $this->password );
 		$user->generateAuthKey ();
 		$user->fch_creacion = Utils::getFechaActual ();
+		$user->id_tipo_usuario = 1;
 		
 		// Si esta activada la opcion de mandar correo de activación el usuario estara en status pendiente
 		if (Yii::$app->params ['modUsuarios'] ['mandarCorreoActivacion']) {
