@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntOrdenesCompras;
 use app\modules\ModUsuarios\models\Utils;
+use app\models\EntBoletos;
 
 class SiteController extends Controller
 {
@@ -82,9 +83,10 @@ class SiteController extends Controller
     }
 
     public function actionMisBoletos(){
-        echo Utils::generateBoleto(1);
-        exit;
-        return $this->render("mis-boletos");
+        $idUsuario = Yii::$app->user->identity->id_usuario;
+        $boletosUsuario = EntBoletos::find(['id_usurio'=>$idUsuario])->all();
+        
+        return $this->render("mis-boletos", ['boletos'=>$boletosUsuario]);
     }
 
     /**
