@@ -195,7 +195,7 @@ class IPNPayPal {
 		}
 
         // Verifica que no este pagada la orden de compra
-		$ordenCompra = EntOrdenesCompras::find()->where(['txt_token'=>$item_number, 'b_pagado'=>0])->one();
+		$ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$item_number, 'b_pagado'=>0])->one();
 		
 		if (empty ( $ordenCompra )) {
             $this->crearLog('PayPal'.$custom,  "\n\r No existe orden de compra: $item_number ");
