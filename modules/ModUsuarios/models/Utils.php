@@ -81,4 +81,9 @@ class Utils {
 				//'text' => $templateText 
 		], $params )->setFrom ( $from )->setTo ( $to )->setSubject ( $subject )->send ();
 	}
+
+	public function sendPagoNotificacion($email, $parametrosEmail) {
+		// Envia el correo electronico
+		return $this->sendEmail ( '@app/email/layouts/notificacion-compra.php', '@app/email/', 'development@gom.com.mx', $email, 'Notificación de compra.', $parametrosEmail );
+	}
 }
