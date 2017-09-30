@@ -20,6 +20,8 @@ use app\modules\ModUsuarios\models\EntUsuarios;
 
 class PagosController extends Controller
 {
+
+	public $enableCsrfValidation = false;
     /**
      * @inheritdoc
      */
