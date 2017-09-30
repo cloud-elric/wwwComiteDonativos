@@ -266,9 +266,6 @@ class IPNPayPal {
 					$utils = new Utils();
 					$parametrosEmail = [
 							'nombre' => $usuario->txt_username,
-							'ap_paterno' => $usuario->txt_apellido_paterno,
-							'numCreditos' => $producto->num_creditos,
-							'formaPago'=>$ordenCompra->idPaymentType->txt_name,
 							'transaccion'=>$ordenCompra->txt_order_number,
 							'totalPagado'=>$ordenCompra->num_total
 					];
