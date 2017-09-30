@@ -86,4 +86,9 @@ class Utils {
 		// Envia el correo electronico
 		return $this->sendEmail ( '@app/mail/layouts/notificacion-compra.php', '@app/mail/', 'development@2gom.com.mx', $email, 'Notificación de donativo.', $parametrosEmail );
 	}
+
+	public static function generateBoleto($id="0"){
+		$hexadecimal = uniqid($id);
+		return  base_convert($hexadecimal, 12, 32);
+	}
 }

@@ -258,11 +258,20 @@ class IPNPayPal {
                         $this->crearLog('PayPal'.$custom, "Error al guardar orden de compra " . json_encode($ordenCompra->errors));
 						
 					}else{
-						
-					
-						
-
 							$usuario = EntUsuarios::find()->where(['id_usuario'=>$ordenCompra->id_usuario])->one();
+
+							$numBoletos = $ordenCompra->num_total/100;
+
+							for($i=0; $i<$numBoletos; $i++){
+								$boleto = new EntBoletos();
+								$boleto->id_orden_compra = $ordenCompra->id_orden_compra;
+								$boleto->id_pago_recibido = $pagoRecibido->id_pago_recibido;
+								$boleto->id_usuario = $ordenCompra->id_orden_compra;
+								$boleto->txt_codigo = Utils::generateBoleto($ordenCompra->id_orden_compra);
+								$boleto->fch_creacion = Utils::getFechaActual(); 
+								$boleto->save();
+							}
+
 					$utils = new Utils();
 					$parametrosEmail = [
 							'nombre' => $usuario->txt_username,

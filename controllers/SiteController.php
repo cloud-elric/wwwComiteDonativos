@@ -81,6 +81,12 @@ class SiteController extends Controller
         return $this->render('index', ['ordenCompra'=>$ordenCompra]);
     }
 
+    public function actionMisBoletos(){
+        echo Utils::generateBoleto(1);
+        exit;
+        return $this->render("mis-boletos");
+    }
+
     /**
     * Action para seleccionar la orden de pago (Paypal u OpenPay)
     */
