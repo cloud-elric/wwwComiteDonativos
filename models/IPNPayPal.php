@@ -266,7 +266,7 @@ class IPNPayPal {
 								$boleto = new EntBoletos();
 								$boleto->id_orden_compra = $ordenCompra->id_orden_compra;
 								$boleto->id_pago_recibido = $pagoRecibido->id_pago_recibido;
-								$boleto->id_usuario = $ordenCompra->id_orden_compra;
+								$boleto->id_usuario = $ordenCompra->id_usuario;
 								$boleto->txt_codigo = Utils::generateBoleto($ordenCompra->id_orden_compra);
 								$boleto->fch_creacion = Utils::getFechaActual(); 
 								
