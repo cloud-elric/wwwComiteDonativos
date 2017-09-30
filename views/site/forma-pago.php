@@ -11,8 +11,8 @@ $this->registerJsFile(
         <div class="panel">
             <div class="panel-body">
                 <h1>Seleccionar forma de pago</h1>
-                <button id="opc-pay-pal" data-tokenoc="<?=$tokenOc?>" data-token="tp_80244ff4f23c1f06e8262c2b0a7462a6571112ad791dc" class="btn btn-primary btn-block">PayPal</button>
-                <button id="opc-open-pay" data-tokenoc="<?=$tokenOc?>" data-token="tp_3922b05cccd499fb9d2c415038ab9c08571112b938d1d" class="btn btn-primary btn-block">Open Pay</button>
+                <button  data-tokenoc="<?=$tokenOc?>" data-token="tp_80244ff4f23c1f06e8262c2b0a7462a6571112ad791dc" class="btn btn-primary btn-block js-btn-pago">PayPal</button>
+                <button  data-tokenoc="<?=$tokenOc?>" data-token="tp_3922b05cccd499fb9d2c415038ab9c08571112b938d1d" class="btn btn-primary btn-block js-btn-pago">Open Pay</button>
             </div>
         </div>
     </div>

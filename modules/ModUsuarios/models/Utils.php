@@ -84,6 +84,6 @@ class Utils {
 
 	public function sendPagoNotificacion($email, $parametrosEmail) {
 		// Envia el correo electronico
-		return $this->sendEmail ( '@app/mail/layouts/notificacion-compra.php', '@app/mail/', 'development@gom.com.mx', $email, 'Notificación de compra.', $parametrosEmail );
+		return $this->sendEmail ( '@app/mail/layouts/notificacion-compra.php', '@app/mail/', 'development@2gom.com.mx', $email, 'Notificación de donativo.', $parametrosEmail );
 	}
 }

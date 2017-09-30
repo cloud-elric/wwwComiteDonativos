@@ -2,13 +2,14 @@ var modal = $("#modal-checkout");
 var progressBar = $(".progressBar-hidden .progress");
 var contenedorAjax = $(".ajax-container");
 $(document).ready(function(){
-    $("#opc-pay-pal").on("click", function(){
+    $(".js-btn-pago").on("click", function(){
         var token = $(this).data("token");
         var tokenOc = $(this).data("tokenoc");
         abrirModal();
         colocarProgressBar();
         enviarInformacion(token, tokenOc);
     });
+
 });
 
 function abrirModal(){

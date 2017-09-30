@@ -18,10 +18,13 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        //'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
         'css/site.css',
         'css/donativos-site.css',
+        
     ];
     public $js = [
+        //'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

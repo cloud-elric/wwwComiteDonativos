@@ -10,7 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use vendor\facebook\FacebookI;
 use app\models\Pagos;
-use app\models\Utils;
+use app\modules\ModUsuarios\models\Utils;
 use app\models\CatTiposPago;
 use app\models\EntOrdenesCompras;
 use yii\web\BadRequestHttpException;
@@ -113,20 +113,21 @@ class PagosController extends Controller
     private function vistaPago($ordenCompra){
         
         switch ($ordenCompra->id_tipo_pago){
-            case 1:
+			case 1:
                 return $this->renderAjax('formPayPal', ['ordenCompra'=>$ordenCompra]);
             break;
-            case 2:
+			case 2:
+				$ordenCompra1 = $this->crearOrdenCompra($ordenCompra);
 				$ordenCompra2 = $this->crearOrdenCompra($ordenCompra);
 
-                $charger =  $this->generarOrdenCompraOpenPay($ordenCompra->txt_description, $ordenCompra->txt_order_number, $ordenCompra->num_total);
+                $charger =  $this->generarOrdenCompraOpenPay($ordenCompra1->txt_description, $ordenCompra1->txt_order_number, $ordenCompra1->num_total);
                 return $this->renderAjax('openPay', ['charger'=>$charger, 'ordenCompra'=>$ordenCompra, 'ordenCompra2'=>$ordenCompra2]);
             break;
 
         }
     }
 
-    public function crearOrdenCompraTarjeta($ordenCompraGuardada){
+    public function crearOrdenCompra($ordenCompraGuardada){
         
            $ordenNumber = Utils::generateToken('oc_');
            
@@ -256,7 +257,7 @@ class PagosController extends Controller
 		$mc_gross = $transaction ['amount'];
 		$order_id = $transaction ['order_id'];
 		
-		$ordenCompra = PayOrdenesCompras::find()->where(['txt_order_number'=>$order_id,'b_pagado'=>0])->one();
+		$ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$order_id,'b_pagado'=>0])->one();
 		
 		if(empty($ordenCompra)){
 			$this->crearLog ('OpenPayError', "El order ID no existe o ya esta marcado como completo :" . $order_id );
