@@ -269,7 +269,12 @@ class IPNPayPal {
 								$boleto->id_usuario = $ordenCompra->id_orden_compra;
 								$boleto->txt_codigo = Utils::generateBoleto($ordenCompra->id_orden_compra);
 								$boleto->fch_creacion = Utils::getFechaActual(); 
-								$boleto->save();
+								
+								if($boleto->save()){
+
+								}else{
+									$this->crearLog('PayPal'.$custom, "Error al guardar boleto " . json_encode($boleto->errors));
+								}
 							}
 
 					$utils = new Utils();
