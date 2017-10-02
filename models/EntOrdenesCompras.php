@@ -42,7 +42,7 @@ class EntOrdenesCompras extends \yii\db\ActiveRecord
             [['txt_order_number', 'txt_description', 'id_usuario', 'num_total'], 'required'],
             [['id_usuario', 'id_tipo_pago', 'b_pagado', 'b_habilitado'], 'integer'],
             [['fch_creacion'], 'safe'],
-            [['num_total'], 'number'],
+            [['num_total'], 'number', 'message'=>'Debe ingresar solo números'],
             ['num_total', 'compare', 'compareValue' => 0, 'operator' => '>', 'type' => 'number', 'message'=>'Debe ingresar una cantidad mayor a 0'],
             [['txt_order_number', 'txt_order_open_pay'], 'string', 'max' => 50],
             [['txt_description'], 'string', 'max' => 500],

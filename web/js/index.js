@@ -7,6 +7,7 @@ $(document).ready(function(){
     amount = $("#entordenescompras-num_total");
 
     otraCantidad.on("change", function(e){
+        removerActivar();
         amount.val(otraCantidad.val());
     });
 
