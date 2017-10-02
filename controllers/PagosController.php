@@ -317,7 +317,7 @@ class PagosController extends Controller
 		$pagoRecibido->txt_monto_pago = $mc_gross;
 		$pagoRecibido->id_orden_compra = $ordenCompra->id_orden_compra;
 		
-		$producto = $ordenCompra->idProducto;	
+		
 
 		$transaction = Yii::$app->db->beginTransaction();
 		$error = false;

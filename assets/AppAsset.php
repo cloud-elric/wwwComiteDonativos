@@ -24,7 +24,7 @@ class AppAsset extends AssetBundle
         
     ];
     public $js = [
-        //'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+        'plugins/sweet-alert/sweetalert.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
