@@ -41,7 +41,7 @@ $(document).ready(function(){
                         $("#pay-button").prop("disabled", false);
                         $('.lean-overlay').trigger('click');
 						swal("Correcto", "La compra se ha procesado correctamente", "success");
-                        paso1();
+                        
 					}else{
 						//toastrError(response);
 						$("#pay-button").prop( "disabled", false);
