@@ -3,17 +3,15 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\LoginForm */
-
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
-if(isset($_GET['monto'])){
-	$monto = $_GET['monto'];
-}else{
-	$monto = 0;
-}
+
+$session = Yii::$app->session;
+echo $monto = $session->get('monto');;
+
 if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){
 ?>
 <script>
