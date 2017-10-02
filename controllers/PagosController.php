@@ -17,6 +17,7 @@ use yii\web\BadRequestHttpException;
 use app\models\EntPagosRecibidos;
 use app\models\IPNPayPal;
 use app\modules\ModUsuarios\models\EntUsuarios;
+use app\models\EntBoletos;
 
 class PagosController extends Controller
 {
@@ -327,6 +328,25 @@ class PagosController extends Controller
 				if($ordenCompra->save()){
 					
 					$usuario = EntUsuarios::find()->where(['id_usuario'=>$ordenCompra->id_usuario])->one();
+
+					$numBoletos = $ordenCompra->num_total/100;
+					
+					for($i=0; $i<$numBoletos; $i++){
+						$boleto = new EntBoletos();
+						$boleto->id_orden_compra = $ordenCompra->id_orden_compra;
+						$boleto->id_pago_recibido = $pagoRecibido->id_pago_recibido;
+						$boleto->id_usuario = $ordenCompra->id_usuario;
+						$boleto->txt_codigo = Utils::generateBoleto($ordenCompra->id_orden_compra);
+						$boleto->fch_creacion = Utils::getFechaActual(); 
+						
+						if($boleto->save()){
+
+						}else{
+							$this->crearLog('PayPal'.$custom, "Error al guardar boleto " . json_encode($boleto->errors));
+						}
+					}	
+
+
 					$utils = new \app\modules\ModUsuarios\models\Utils();
 					$parametrosEmail = [
 							'nombre' => $usuario->txt_username,
