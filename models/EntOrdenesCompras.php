@@ -65,7 +65,7 @@ class EntOrdenesCompras extends \yii\db\ActiveRecord
             'id_tipo_pago' => 'Id Tipo Pago',
             'fch_creacion' => 'Fch Creacion',
             'b_pagado' => 'B Pagado',
-            'num_total' => 'Cantidada a donar',
+            'num_total' => 'Cantidad a donar',
             'b_habilitado' => 'B Habilitado',
         ];
     }

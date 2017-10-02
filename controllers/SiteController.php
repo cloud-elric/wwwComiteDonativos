@@ -92,7 +92,7 @@ class SiteController extends Controller
             return $this->redirect(['forma-pago', 'token'=>$ordenCompra->txt_order_number]);
         }    
 
-        print_r($ordenCompra->errors);
+        
 
         return $this->render('index', ['ordenCompra'=>$ordenCompra]);
     }
