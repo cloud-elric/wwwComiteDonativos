@@ -218,8 +218,8 @@ class ManagerController extends Controller {
 		$usuarioGuardado = $existUsuarioFacebook->saveDataFacebook ( $data );
 		
 		if (Yii::$app->getUser ()->login ( $existUsuario )) {
-			return $this->redirect(['site/index', 'monto'=>$monto]);
-			//return $this->goHome ();
+			//return $this->redirect(['site/index', 'monto'=>$monto]);
+			return $this->goHome ();
 		}
 	}
 	public function actionTest() {

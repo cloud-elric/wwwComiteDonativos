@@ -1,6 +1,17 @@
 <?php
 $this->title = "Seleccionar forma de pago";
 
+
+$this->registerJsFile(
+    'https://openpay.s3.amazonaws.com/openpay.v1.min.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+
+$this->registerJsFile(
+    'https://openpay.s3.amazonaws.com/openpay-data.v1.min.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+
 $this->registerJsFile(
     '@web/js/forma-pago.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
