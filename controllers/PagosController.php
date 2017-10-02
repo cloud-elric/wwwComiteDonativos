@@ -188,7 +188,7 @@ class PagosController extends Controller
 
             if (isset ( $_POST ["token_id"] ) && $_POST ["orderId"] && $_POST['deviceIdHiddenFieldName']) {
 			
-            $ordenCompra = PayOrdenesCompras::find()->where(['txt_order_number'=>$_POST['orderId']])->one();
+            $ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$_POST['orderId']])->one();
 	
 			if (empty ( $ordenCompra )) {
 				throw new BadRequestHttpException ( 400, 'Datos requeridos.' );
