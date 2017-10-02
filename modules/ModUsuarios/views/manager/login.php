@@ -10,7 +10,7 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 
 $session = Yii::$app->session;
-echo $monto = $session->get('monto');;
+$monto = $session->get('monto');;
 
 if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){
 ?>
