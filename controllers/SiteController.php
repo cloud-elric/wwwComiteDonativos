@@ -23,10 +23,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'index', 'mis-boletos', 'forma-pago'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'index', 'mis-boletos', 'forma-pago'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
