@@ -286,7 +286,7 @@ class PagosController extends Controller
 		}
 		
 		// VALIDA QUE LA TRANSACCION NO SE ENCUIENTRE REGISTRADA EN LA BASE DE DATOS PREVIAMENTE
-        $pagoRecibed = PayPaymentsRecibed::find()->where(['txt_transaccion'=>$txn_id])->one();
+        $pagoRecibed = EntPagosRecibidos::find()->where(['txt_transaccion'=>$txn_id])->one();
 
 		
 		if (! empty ( $pagoRecibed )) {
@@ -305,7 +305,7 @@ class PagosController extends Controller
 			$this->crearLog ('OpenPayUser'.$ordenCompra->id_usuario, "CANTIDAD DE PRODUCTOS INCORRECTO: quantity=$quantity\n\r" );
 		}
 		
-		$pagoRecibido = new PayPaymentsRecibed ();
+		$pagoRecibido = new EntPagosRecibidos ();
 		$pagoRecibido->id_usuario = $ordenCompra->id_usuario;
 		$pagoRecibido->id_tipo_pago = 2;
 		$pagoRecibido->txt_transaccion_local = 'Local';
@@ -325,9 +325,6 @@ class PagosController extends Controller
 
 				$ordenCompra->b_pagado = 1;
 				if($ordenCompra->save()){
-					
-					$userCreditos = new EntUsuariosCreditos();
-					$userCreditos->agregarCreditos($ordenCompra->id_usuario, $producto->num_creditos, 'Compra de '.$producto->num_creditos.' créditos');
 					
 					$usuario = EntUsuarios::find()->where(['id_usuario'=>$ordenCompra->id_usuario])->one();
 					$utils = new \app\modules\ModUsuarios\models\Utils();
