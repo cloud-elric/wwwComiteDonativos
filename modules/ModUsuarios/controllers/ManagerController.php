@@ -175,7 +175,7 @@ class ManagerController extends Controller {
 	/**
 	 * Callback para facebook
 	 */
-	public function actionCallbackFacebook() {
+	public function actionCallbackFacebook($monto=0) {
 		$fb = new FacebookI ();
 		
 		// Obtenemos la respuesta de facebook
@@ -218,7 +218,8 @@ class ManagerController extends Controller {
 		$usuarioGuardado = $existUsuarioFacebook->saveDataFacebook ( $data );
 		
 		if (Yii::$app->getUser ()->login ( $existUsuario )) {
-			return $this->goHome ();
+			return $this->redirect(['site/index', 'monto'=>$monto]);
+			//return $this->goHome ();
 		}
 	}
 	public function actionTest() {
