@@ -6,7 +6,7 @@ use yii\bootstrap\Html;
 $this->title = 'Elegir monto a donar';
 
 $this->registerJsFile(
-    '@web/js/index.js',
+    '@web/webassets/js/index.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 ?>

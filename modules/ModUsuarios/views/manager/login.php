@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 $session = Yii::$app->session;
 $monto = $session->get('monto');;
 
-if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){
-?>
+if (Yii::$app->params['modUsuarios']['facebook']['usarLoginFacebook']) {
+	?>
 <script>
 
 logInWithFacebook = function() {
@@ -25,7 +25,7 @@ logInWithFacebook = function() {
 		}
 		checkLoginState();
 	}, {
-		scope : '<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['permisosForzosos']?>',
+		scope : '<?= Yii::$app->params['modUsuarios']['facebook']['permisosForzosos'] ?>',
 		auth_type : 'rerequest'
 	});
 	return false;
@@ -52,7 +52,7 @@ function statusChangeCallback(response) {
 				
 			}else{
 				// Logged into your app and Facebook.
-				window.location.replace('<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['CALLBACK_URL']?>/<?=$monto?>');
+				window.location.replace('<?= Yii::$app->params['modUsuarios']['facebook']['CALLBACK_URL'] ?>/<?= $monto ?>');
 				//window.location.replace('http://notei.com.mx/test/wwwComiteConcursante/index.php/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
 //				window.location
 //						.replace('https://hazclicconmexico.comitefotomx.com/concursar/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
@@ -100,7 +100,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
 	FB.init({
-		appId:'<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['APP_ID']?>',
+		appId:'<?= Yii::$app->params['modUsuarios']['facebook']['APP_ID'] ?>',
 		cookie : true, // enable cookies to allow the server to access
 		// the session
 		xfbml : true, // parse social plugins on this page
@@ -122,22 +122,23 @@ window.fbAsyncInit = function() {
 
 </script>
 
-<?php }?>
-
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<div class="panel">
-			<div class="panel-body">
-				<h1><?= Html::encode($this->title) ?></h1> 
-				<?php if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){?>
-
-				<button type="button" class="btn btn-blue btn-facebook"
-								onClick="logInWithFacebook()" scope="<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['permisos']?>">
-								<i class="fa fa-facebook"></i> Ingresar con Facebook
-				</button>
-
-				<?php }?>
-			</div>
-		</div>
-	</div>					
+<?php 
+} ?>
+<div class="login-content">
+	<h3>Antes de recibir tus donativos es necesario registrarte</h3>
+	<a type="button" class="btn btn-fb"
+				onClick="logInWithFacebook()" scope="<?= Yii::$app->params['modUsuarios']['facebook']['permisos'] ?>">
+		<i class="ion ion-social-facebook"></i><span>Iniciar Sesión con facebook</span>
+	</a>
+    <span class="caption">
+		por cada 100 pesos que dones obtendrás un boleto para participar en la rifa de una experiencia MasterClass con algúno de los fotógrafos voluntarios
+	</span>
 </div>
+<div class="donativos-content"></div>
+
+
+
+
+
+
+			

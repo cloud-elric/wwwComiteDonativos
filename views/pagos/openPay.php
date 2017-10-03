@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 
 $this->registerJsFile(
-    '@web/js/open-pay.js',
+    '@web/webassets/js/open-pay.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 
