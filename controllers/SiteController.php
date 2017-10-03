@@ -204,4 +204,14 @@ class SiteController extends Controller
         }
 
     }
+
+    public function actionVerificarPago($oc=null){
+        $ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'])->one();
+        
+                if(empty($ordenCompra)){
+                  echo "0";
+                }else{
+                    echo "1";
+                }
+    }
 }
