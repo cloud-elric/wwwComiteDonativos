@@ -27,7 +27,7 @@ class Pagos {
 		
 		// para producción hay que cambiar el valor de la variable $sandboxMode a false en el archivo OpenpayApi.php
 		
-		$openpay = \Openpay::getInstance ( 'mgvepau0yawr74pc5p5x', 'sk_b1885d10781b4a05838869f02c211d48' );
+		$openpay = \Openpay::getInstance ( 'mxmzxkxphmwhz8hnbzu8', 'pk_b0439b892a08485a96f6d21bd897d6bc' );
 		
 		$custom = array (
 				

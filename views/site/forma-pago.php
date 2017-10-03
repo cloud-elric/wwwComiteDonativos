@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 $this->title = "Seleccionar forma de pago";
 
 
@@ -29,10 +30,10 @@ $this->registerJsFile(
         <h3>Selecciona un tipo de pago</h3>
         <div class="tipos-de-pago">
           <div class="pagocard">
-            <a data-tokenoc="<?=$tokenOc?>" data-token="tp_80244ff4f23c1f06e8262c2b0a7462a6571112ad791dc" class="btn-tipo-de-pago js-btn-pago"><img src="webassets/images/logo-paypal.png" alt=""></a><span class="caption">Tarjeta de Crédito o cuenta</span>
+            <a data-tokenoc="<?=$tokenOc?>" data-token="tp_80244ff4f23c1f06e8262c2b0a7462a6571112ad791dc" class="btn-tipo-de-pago js-btn-pago"><img src="<?=Url::base()?>/webassets/images/logo-paypal.png" alt=""></a><span class="caption">Tarjeta de Crédito o cuenta</span>
           </div>
           <div class="pagocard">
-            <a data-tokenoc="<?=$tokenOc?>" data-token="tp_3922b05cccd499fb9d2c415038ab9c08571112b938d1d" class="btn-tipo-de-pago js-btn-pago"><img src="webassets/images/logo-openpay.png" alt=""></a><span class="caption">Pago en establecimiento</span>
+            <a data-tokenoc="<?=$tokenOc?>" data-token="tp_3922b05cccd499fb9d2c415038ab9c08571112b938d1d" class="btn-tipo-de-pago js-btn-pago"><img src="<?=Url::base()?>/webassets/images/logo-openpay.png" alt=""></a><span class="caption">Pago en establecimiento</span>
           </div>
         </div>
       </div>
