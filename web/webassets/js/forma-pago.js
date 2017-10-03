@@ -1,5 +1,4 @@
 var modal = $("#modal-checkout");
-var progressBar = $(".progressBar-hidden .progress");
 var contenedorAjax = $(".ajax-container");
 $(document).ready(function(){
     $(".js-btn-pago").on("click", function(){
@@ -8,27 +7,17 @@ $(document).ready(function(){
         var tipo = $(this).data("value");
         // abrirModal();
         // colocarProgressBar();
-        if(tipo==1){
-            enviarInformacion(token, tokenOc, tipo);
-        }
+        enviarInformacion(token, tokenOc, tipo);
     });
 
 });
 
 function abrirModal(){
-    modal.modal("show");
+    
 }
 
 function cerrarModal(){ 
-    modal.modal("hide");
-}
-
-function colocarProgressBar(){
-    contenedorAjax.html(progressBar.html());
-}
-
-function removerProgressBar(){
-    contenedorAjax.html("");
+    
 }
 
 function colocarRespuesta(res){
@@ -47,6 +36,8 @@ function enviarInformacion(token , tokenOc, tipo){
 
             if(tipo==1){
                 $("#form-pay-pal").submit();    
+            }else{
+                abrirModal();
             }
         }
     });
