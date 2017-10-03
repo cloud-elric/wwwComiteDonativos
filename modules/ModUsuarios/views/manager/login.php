@@ -47,9 +47,9 @@ function statusChangeCallback(response) {
 				}
 			}
 			if(declined.toString()=="email"){
-				
+
 				alert("Parece que no aceptaste la solicitud de Facebook o no nos compartiste tu correo electrónico.");
-				
+
 			}else{
 				// Logged into your app and Facebook.
 				window.location.replace('<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['CALLBACK_URL']?>/<?=$monto?>');
@@ -59,12 +59,12 @@ function statusChangeCallback(response) {
 			}
 		});
 
-		
+
 	} else if (response.status === 'not_authorized') {
 		alert("Rechazo ingresar mediante Facebook");
 		// The person is logged into Facebook, but not your app.
 	} else {
-		
+
 		// The person is not logged into Facebook, so we're not sure if
 		// they are logged into this app or not.
 	}
@@ -94,7 +94,7 @@ function checkLoginState() {
 
 	FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
-		
+
 	});
 }
 
@@ -128,7 +128,34 @@ window.fbAsyncInit = function() {
 	<div class="col-md-6 col-md-offset-3">
 		<div class="panel">
 			<div class="panel-body">
-				<h1><?= Html::encode($this->title) ?></h1> 
+				<h1><?= Html::encode($this->title) ?></h1>
+
+				<?php $form = ActiveForm::begin([
+        'id' => 'login-form',
+        'options' => ['class' => 'form-horizontal'],
+        'fieldConfig' => [
+            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+        ],
+    ]); ?>
+
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+
+        <?= $form->field($model, 'password')->passwordInput() ?>
+
+        <?= $form->field($model, 'rememberMe')->checkbox([
+            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+        ]) ?>
+
+        <div class="form-group">
+            <div class="col-lg-offset-1 col-lg-11">
+                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            </div>
+        </div>
+
+    <?php ActiveForm::end(); ?>
+
+
 				<?php if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){?>
 
 				<button type="button" class="btn btn-blue btn-facebook"
@@ -139,5 +166,5 @@ window.fbAsyncInit = function() {
 				<?php }?>
 			</div>
 		</div>
-	</div>					
+	</div>
 </div>
