@@ -99,7 +99,7 @@ class SiteController extends Controller
 
     public function actionMisBoletos(){
         $idUsuario = Yii::$app->user->identity->id_usuario;
-        $boletosUsuario = EntBoletos::find(['id_usurio'=>$idUsuario])->all();
+        $boletosUsuario = EntBoletos::find()->where(['id_usuario'=>$idUsuario])->all();
         
         return $this->render("mis-boletos", ['boletos'=>$boletosUsuario]);
     }
