@@ -38,10 +38,10 @@ $this->registerJsFile(
     </div>
     <span class="caption">Para cualquier duda sobre como cobrar, por favor llamar al teléfono +52 (55) 5351 7371 en un horario de 8am a 9pm de lunes a domingo</span>
     <div class="tiendas-participantes">
-      <img src="webassets/images/tiendas.jpg" alt="Tiendas participantes">
+      <img src="<?=Url::base()?>/webassets/images/tiendas.jpg" alt="Tiendas participantes">
     </div>
     <div class="powered">
-      <span>powered by</span><img src="webassets/images/logo-openpay.png" alt="powered by openpay">
+      <span>powered by</span><img src="<?=Url::base()?>/webassets/images/logo-openpay.png" alt="powered by openpay">
     </div>
     <a class="close-modal"><i class="ion ion-close"></i></a>
     <a href="" class="btn btn-primary print-btn">Imprimir este ticket</a>
