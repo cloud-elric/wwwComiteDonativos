@@ -9,8 +9,8 @@ use app\modules\ModUsuarios\models\EntUsuarios;
 
 
 class IPNPayPal {
-	const DEBUG = 1;
-	const USE_SANDBOX = 1;
+	const DEBUG = 0;
+	const USE_SANDBOX = 0;
 
      public function crearLog($nombreArchivo,$message){
         
