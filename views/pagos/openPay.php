@@ -19,7 +19,7 @@ $this->registerJsFile(
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
+      <div class="panel-body  tickert-print">
        
       <img  src="<?=$charger->payment_method->barcode_url?>" alt="Código de Barras">
                             <div><?=$charger->payment_method->reference?></div>
