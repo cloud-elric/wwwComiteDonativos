@@ -43,7 +43,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <section class="donativos-wrapper">
-    <div class="container container-full">
+    <div class="container container-column container-full">
     <?= $content ?>
     </div>
   </section>
