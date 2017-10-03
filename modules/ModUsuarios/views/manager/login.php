@@ -3,15 +3,17 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\LoginForm */
-
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 
-if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){
-?>
+$session = Yii::$app->session;
+$monto = $session->get('monto');;
+
+if (Yii::$app->params['modUsuarios']['facebook']['usarLoginFacebook']) {
+	?>
 <script>
 
 logInWithFacebook = function() {
@@ -23,7 +25,7 @@ logInWithFacebook = function() {
 		}
 		checkLoginState();
 	}, {
-		scope : '<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['permisosForzosos']?>',
+		scope : '<?= Yii::$app->params['modUsuarios']['facebook']['permisosForzosos'] ?>',
 		auth_type : 'rerequest'
 	});
 	return false;
@@ -50,7 +52,7 @@ function statusChangeCallback(response) {
 				
 			}else{
 				// Logged into your app and Facebook.
-				window.location.replace('http://notei.com.mx/test/wwwLogin/web/callback-facebook');
+				window.location.replace('<?= Yii::$app->params['modUsuarios']['facebook']['CALLBACK_URL'] ?>/<?= $monto ?>');
 				//window.location.replace('http://notei.com.mx/test/wwwComiteConcursante/index.php/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
 //				window.location
 //						.replace('https://hazclicconmexico.comitefotomx.com/concursar/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
@@ -98,8 +100,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
 	FB.init({
-		//appId : '1029875693761281',
-		appId:'1754524001428992',
+		appId:'<?= Yii::$app->params['modUsuarios']['facebook']['APP_ID'] ?>',
 		cookie : true, // enable cookies to allow the server to access
 		// the session
 		xfbml : true, // parse social plugins on this page
@@ -121,45 +122,23 @@ window.fbAsyncInit = function() {
 
 </script>
 
-<?php }?>
-
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'options' => ['class' => 'form-horizontal'],
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
-        </div>
-
-    <?php ActiveForm::end(); ?>
-    
-    <?php if(Yii::$app->params ['modUsuarios'] ['facebook'] ['usarLoginFacebook']){?>
-    
-<button type="button" class="btn btn-blue btn-facebook"
-					onClick="logInWithFacebook()" scope="<?=Yii::$app->params ['modUsuarios'] ['facebook'] ['permisos']?>">
-					<i class="fa fa-facebook"></i> Ingresar con Facebook
-				</button>
-<?php }?>				
-				
-   
+<?php 
+} ?>
+<div class="login-content">
+	<h3>Antes de recibir tus donativos es necesario registrarte</h3>
+	<a type="button" class="btn btn-fb"
+				onClick="logInWithFacebook()" scope="<?= Yii::$app->params['modUsuarios']['facebook']['permisos'] ?>">
+		<i class="ion ion-social-facebook"></i><span>Iniciar Sesión con facebook</span>
+	</a>
+    <span class="caption">
+		por cada 100 pesos que dones obtendrás un boleto para participar en la rifa de una experiencia MasterClass con algúno de los fotógrafos voluntarios
+	</span>
 </div>
+<div class="donativos-content"></div>
+
+
+
+
+
+
+			

@@ -1,53 +1,41 @@
 <?php
-
+use yii\widgets\ActiveForm;
+use yii\bootstrap\Html;
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Elegir monto a donar';
+
+$this->registerJsFile(
+    '@web/webassets/js/index.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel">
+            <div class="panel-body">
+                <?php $form = ActiveForm::begin(); ?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+                <a class="btn btn-primary btn-block js-select-amount <?=$ordenCompra->num_total==100?'btn-success':''?>"  data-value="100">$ 100 MXN</a>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+                <a class="btn btn-primary btn-block js-select-amount <?=$ordenCompra->num_total==200?'btn-success':''?>" data-value="200">$ 200 MXN</a>
 
-    <div class="body-content">
+                <a class="btn btn-primary btn-block js-select-amount <?=$ordenCompra->num_total==300?'btn-success':''?>" data-value="300">$ 300 MXN</a>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                <div class="form-group">
+                    <label for="amount">Otra cantidad</label>
+                    <input id="amount" type="text" class="form-control js-add" value="0" />
+                </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <?= $form->field($ordenCompra, 'num_total')->hiddenInput(['maxlength' => true])->label(false)?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                <div class="form-group">
+                    <?= Html::submitButton('Donar', ['class' => 'btn btn-success']) ?>
+                </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
-
     </div>
 </div>

@@ -9,9 +9,27 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\EntOrdenesCompras;
+use app\modules\ModUsuarios\models\Utils;
+use app\models\EntBoletos;
 
 class SiteController extends Controller
 {
+
+    public function beforeAction($event)
+    {
+
+        if(isset($_GET['monto'])){
+            $monto = $_GET['monto'];
+        }else{
+            $monto = 0;
+        }
+        $session = Yii::$app->session;
+        $session->set('monto', $monto);
+        
+        return parent::beforeAction($event);
+    }
+
     /**
      * @inheritdoc
      */
@@ -20,10 +38,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'index', 'mis-boletos', 'forma-pago'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'index', 'mis-boletos', 'forma-pago'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -59,10 +77,62 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($monto=0)
     {
-        return $this->render('index');
+        $idUsuario = Yii::$app->user->identity->id_usuario;
+        $ordenCompra = new EntOrdenesCompras();
+        $ordenCompra->num_total = $monto;
+        $ordenCompra->txt_order_number = Utils::generateToken("oc_");
+        $ordenCompra->id_usuario = $idUsuario;
+        $ordenCompra->txt_description = "Donativo";
+        if ($ordenCompra->load(Yii::$app->request->post()) && $ordenCompra->save()) {
+
+            
+
+            return $this->redirect(['forma-pago', 'token'=>$ordenCompra->txt_order_number]);
+        }    
+
+        
+
+        return $this->render('index', ['ordenCompra'=>$ordenCompra]);
     }
+
+    public function actionMisBoletos(){
+        $idUsuario = Yii::$app->user->identity->id_usuario;
+        $boletosUsuario = EntBoletos::find()->where(['id_usuario'=>$idUsuario])->all();
+        
+        return $this->render("mis-boletos", ['boletos'=>$boletosUsuario]);
+    }
+
+    /**
+    * Action para seleccionar la orden de pago (Paypal u OpenPay)
+    */
+    public function actionFormaPago($token=null){
+        $existeOrdenCompra = $this->findOrdenCompra($token);
+        if(!$token || !$existeOrdenCompra ){
+            return $this->redirect("index");
+        }
+
+
+        return $this->render("forma-pago", ["tokenOc"=>$token]);
+
+    }
+
+    /**
+     * Busca la orden de compra en la base de datosd.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $id
+     * @return EntVoluntario the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+     protected function findOrdenCompra($token)
+     {
+         if (($model = EntOrdenesCompras::findOne(["txt_order_number"=>$token])) !== null) {
+             return $model;
+         } else {
+             throw new NotFoundHttpException('The requested page does not exist.');
+         }
+     }
 
     /**
      * Login action.
@@ -113,7 +183,6 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
     /**
      * Displays about page.
      *

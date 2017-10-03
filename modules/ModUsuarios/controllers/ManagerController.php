@@ -156,6 +156,7 @@ class ManagerController extends Controller {
 	 * Loguea al usuario
 	 */
 	public function actionLogin() {
+		$this->layout = "@app/views/layouts/mainNoHeader";
 		if (! Yii::$app->user->isGuest) {
 			return $this->goHome ();
 		}
@@ -174,7 +175,7 @@ class ManagerController extends Controller {
 	/**
 	 * Callback para facebook
 	 */
-	public function actionCallbackFacebook() {
+	public function actionCallbackFacebook($monto=0) {
 		$fb = new FacebookI ();
 		
 		// Obtenemos la respuesta de facebook
@@ -190,10 +191,10 @@ class ManagerController extends Controller {
 		}
 		
 		// asi podemos obtener sus datos de los amigos
-		foreach($data['friendsInApp'] as $key=>$value){
-			$value->id;
-			$value->name;
-		}
+		// foreach($data['friendsInApp'] as $key=>$value){
+		// 	$value->id;
+		// 	$value->name;
+		// }
 		
 		// Buscamos al usuario por email
 		$existUsuario = EntUsuarios::findByEmail ( $data ['profile'] ['email'] );
@@ -203,7 +204,7 @@ class ManagerController extends Controller {
 			$entUsuario = new EntUsuarios ();
 			$entUsuario->addDataFromFaceBook ( $data );
 			
-			$existUsuario = $entUsuario->signup ();
+			$existUsuario = $entUsuario->signup (true);
 		}
 		
 		// Buscamos si existe la cuenta de facebook en la base de datos
@@ -217,6 +218,7 @@ class ManagerController extends Controller {
 		$usuarioGuardado = $existUsuarioFacebook->saveDataFacebook ( $data );
 		
 		if (Yii::$app->getUser ()->login ( $existUsuario )) {
+			//return $this->redirect(['site/index', 'monto'=>$monto]);
 			return $this->goHome ();
 		}
 	}
