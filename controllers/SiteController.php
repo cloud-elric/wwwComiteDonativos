@@ -19,13 +19,13 @@ class SiteController extends Controller
     public function beforeAction($event)
     {
 
-        if(isset($_GET['monto'])){
-            $monto = $_GET['monto'];
-        }else{
-            $monto = 0;
-        }
-        $session = Yii::$app->session;
-        $session->set('monto', $monto);
+        // if(isset($_GET['monto'])){
+        //     $monto = $_GET['monto'];
+        // }else{
+        //     $monto = 0;
+        // }
+        // $session = Yii::$app->session;
+        // $session->set('monto', $monto);
         
         return parent::beforeAction($event);
     }

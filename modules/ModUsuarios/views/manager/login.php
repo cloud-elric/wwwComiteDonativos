@@ -9,8 +9,8 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 
-$session = Yii::$app->session;
-$monto = $session->get('monto');;
+
+$monto = 0;
 
 if (Yii::$app->params['modUsuarios']['facebook']['usarLoginFacebook']) {
 	?>
