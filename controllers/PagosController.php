@@ -122,7 +122,7 @@ class PagosController extends Controller
 				//$ordenCompra2 = $this->crearOrdenCompra($ordenCompra);
 
                 $charger =  $this->generarOrdenCompraOpenPay($ordenCompra1->txt_description, $ordenCompra1->txt_order_number, $ordenCompra1->num_total);
-                return $this->renderAjax('openPay', ['charger'=>$charger, 'ordenCompra'=>$ordenCompra, 'ordenCompra2'=>$ordenCompra2]);
+                return $this->renderAjax('openPay', ['charger'=>$charger, 'ordenCompra'=>$ordenCompra]);
             break;
 
         }

@@ -10,6 +10,8 @@ $(document).ready(function(){
         enviarInformacion(token, tokenOc, tipo);
     });
 
+    
+
 });
 
 function abrirModal(){
@@ -32,12 +34,15 @@ function enviarInformacion(token , tokenOc, tipo){
             formaPago: token
         },
         success:function(res){
-            colocarRespuesta(res);
 
             if(tipo==1){
+                colocarRespuesta(res);
                 $("#form-pay-pal").submit();    
             }else{
-                abrirModal();
+                $(".modal-ticket-op").html(res);
+
+                $(".modal-ticket-op").removeClass("modal-ticket-op-hide");
+                //abrirModal();
             }
         }
     });
