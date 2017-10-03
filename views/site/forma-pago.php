@@ -22,6 +22,26 @@ $this->registerJsFile(
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 ?>
+
+<section class="donativos-wrapper">
+    <div class="container container-column container-full">
+      <div class="tipos-de-pago-content">
+        <h3>Selecciona un tipo de pago</h3>
+        <div class="tipos-de-pago">
+          <div class="pagocard">
+            <a data-tokenoc="<?=$tokenOc?>" data-token="tp_80244ff4f23c1f06e8262c2b0a7462a6571112ad791dc" class="btn-tipo-de-pago js-btn-pago"><img src="webassets/images/logo-paypal.png" alt=""></a><span class="caption">Tarjeta de Crédito o cuenta</span>
+          </div>
+          <div class="pagocard">
+            <a data-tokenoc="<?=$tokenOc?>" data-token="tp_3922b05cccd499fb9d2c415038ab9c08571112b938d1d" class="btn-tipo-de-pago js-btn-pago"><img src="webassets/images/logo-openpay.png" alt=""></a><span class="caption">Pago en establecimiento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- 
+
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3" >
         <div class="panel">
@@ -33,7 +53,7 @@ $this->registerJsFile(
         </div>
     </div>
 </div>
-<!-- Modal -->
+Modal 
 <div class="modal fade" id="modal-checkout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -62,4 +82,4 @@ $this->registerJsFile(
         Cargando...
         </div>
     </div>
-</div>
+</div> -->
