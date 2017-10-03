@@ -35,6 +35,8 @@ $this->registerJsFile(
                                     
                                         $ <?=number_format($charger->amount)?> MXN más comisión
 
+                                        <a class="btn btn-primary js-print-button">Imprimir ticket</a>
+
 
       </div>
     </div>

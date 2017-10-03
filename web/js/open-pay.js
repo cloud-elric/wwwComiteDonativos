@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.collapsible').collapse();
+    
 
     $('.js-print-button').on('click', function(e){
         e.preventDefault();

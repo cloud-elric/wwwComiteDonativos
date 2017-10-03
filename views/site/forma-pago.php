@@ -13,11 +13,16 @@ $this->registerJsFile(
 );
 
 $this->registerJsFile(
+    '@web/plugins/print-area/print-area.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+
+$this->registerJsFile(
     '@web/js/forma-pago.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 ?>
-<div class="row">
+<div class="row tickert-print">
     <div class="col-md-6 col-md-offset-3" >
         <div class="panel">
             <div class="panel-body">
