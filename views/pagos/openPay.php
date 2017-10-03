@@ -7,6 +7,10 @@ $this->registerJsFile(
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 
+$date = date($ordenCompra->fch_creacion);
+$date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
+$date = date("Y-m-d",$date);
+
 ?>
 
 <div class="cargo-total">
@@ -19,7 +23,7 @@ $this->registerJsFile(
     <div class="barcode">
       <h3>Para completar tu pago presenta este código de barras en cualquier establecimiento participante</h3>
       <h4>Este ticket será vigente hasta el:</h4>
-      <span class="fecha"><?=Calendario::getDateComplete($ordenCompra->fch_creacion)?></span>
+      <span class="fecha"><?=Calendario::getDateComplete($date)?></span>
       <img src="<?=$charger->payment_method->barcode_url?>" alt="Codigo de Barras">
       <div class="num-ref"><?=$charger->payment_method->reference?></div>
       <span class="caption">En caso de que el escáner no sea capaz de leer el código de barras, escribir la referencia tal como se muestra.</span>
