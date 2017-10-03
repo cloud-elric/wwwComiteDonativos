@@ -5,9 +5,12 @@ $(document).ready(function(){
     $(".js-btn-pago").on("click", function(){
         var token = $(this).data("token");
         var tokenOc = $(this).data("tokenoc");
-        abrirModal();
-        colocarProgressBar();
-        enviarInformacion(token, tokenOc);
+        var tipo = $(this).data("value");
+        // abrirModal();
+        // colocarProgressBar();
+        if(tipo==1){
+            enviarInformacion(token, tokenOc, tipo);
+        }
     });
 
 });
@@ -32,7 +35,7 @@ function colocarRespuesta(res){
     contenedorAjax.html(res);
 }
 
-function enviarInformacion(token , tokenOc){
+function enviarInformacion(token , tokenOc, tipo){
     $.ajax({
         url: baseUrl+"/pagos/generar-orden-compra?token="+tokenOc,
         type: "POST",
@@ -41,6 +44,10 @@ function enviarInformacion(token , tokenOc){
         },
         success:function(res){
             colocarRespuesta(res);
+
+            if(tipo==1){
+                $("#form-pay-pal").submit();    
+            }
         }
     });
 }

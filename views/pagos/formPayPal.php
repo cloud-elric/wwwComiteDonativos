@@ -49,7 +49,7 @@ use yii\helpers\Url;
                     <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" id="form-pay-pal">
                         <?php 
                             $return  = Yii::$app->urlManager->createAbsoluteUrl ( [ 
-								'site/mis-boletos'
+								'site/procesando?oc='.$ordenCompra->txt_order_number
 			                ] );
 
                             $ipnUrl = Yii::$app->urlManager->createAbsoluteUrl ( [ 
