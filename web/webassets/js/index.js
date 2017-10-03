@@ -1,17 +1,10 @@
 var botonesAmount = null;
 var otraCantidad = null;
 var amount = null;
-var botonEnviar = null;
 $(document).ready(function(){
     botonesAmount = $(".js-select-amount");
     otraCantidad = $(".js-add");
     amount = $("#entordenescompras-num_total");
-    botonEnviar = $(".submit-btn");
-
-    botonEnviar.on("click", function(e){
-        e.preventDefault();
-        $("form").submit();
-    })
 
     otraCantidad.on("change", function(e){
         removerActivar();
@@ -25,10 +18,7 @@ $(document).ready(function(){
         activarBoton(elemento);
         var cantidad = $(this).data("value");
         amount.val(cantidad);
-        $("form").submit();
-    });
-
-
+    })
 });
 
 function activarBoton(elemento){

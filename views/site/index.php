@@ -2,9 +2,7 @@
 use yii\widgets\ActiveForm;
 use yii\bootstrap\Html;
 /* @var $this yii\web\View */
-
 $this->title = 'Elegir monto a donar';
-
 $this->registerJsFile(
     '@web/webassets/js/index.js',
     ['depends' => [\yii\web\JqueryAsset::className()]]
@@ -69,4 +67,4 @@ $this->registerJsFile(
         </div>
       </div>
     </div>
-  </section>            
+  </section> 
