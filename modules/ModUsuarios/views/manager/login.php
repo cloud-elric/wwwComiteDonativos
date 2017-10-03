@@ -52,7 +52,9 @@ function statusChangeCallback(response) {
 				
 			}else{
 				// Logged into your app and Facebook.
-				window.location.replace('<?= Yii::$app->params['modUsuarios']['facebook']['CALLBACK_URL'] ?>/<?= $monto ?>');
+				var url = '<?= Yii::$app->params['modUsuarios']['facebook']['CALLBACK_URL'] ?>/<?= $monto ?>';
+				$('#advanced_iframe').attr('src', url)
+				
 				//window.location.replace('http://notei.com.mx/test/wwwComiteConcursante/index.php/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
 //				window.location
 //						.replace('https://hazclicconmexico.comitefotomx.com/concursar/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
