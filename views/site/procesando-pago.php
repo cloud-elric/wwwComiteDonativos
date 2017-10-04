@@ -6,6 +6,7 @@
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
+    margin: 0 auto;
 }
 
 @keyframes spin {
