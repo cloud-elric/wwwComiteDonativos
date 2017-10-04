@@ -284,7 +284,7 @@ class IPNPayPal {
 							'totalPagado'=>$ordenCompra->num_total
 					];
 				
-					$utils->sendPagoNotificacion($usuario->txt_email, $parametrosEmail );
+					//$utils->sendPagoNotificacion($usuario->txt_email, $parametrosEmail );
 					}
 				
 				
