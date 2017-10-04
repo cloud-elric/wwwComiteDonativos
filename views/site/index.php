@@ -54,7 +54,7 @@ $this->registerJsFile(
               <span class="currency">$</span>
               <?php $form = ActiveForm::begin(); ?>
 
-                <input id="amount" type="text" placeholder="100.00">
+                <input class="js-add" type="text" placeholder="100.00">
 
                 
               <span class="moneda">mxn</span>

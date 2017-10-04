@@ -79,12 +79,19 @@ class SiteController extends Controller
      */
     public function actionIndex($monto=0)
     {
+
+        if($monto<0){
+         $monto = $monto * -1;   
+        }
+
         $idUsuario = Yii::$app->user->identity->id_usuario;
         $ordenCompra = new EntOrdenesCompras();
         $ordenCompra->num_total = $monto;
         $ordenCompra->txt_order_number = Utils::generateToken("oc_");
         $ordenCompra->id_usuario = $idUsuario;
         $ordenCompra->txt_description = "Donativo";
+
+
         if ($ordenCompra->load(Yii::$app->request->post()) && $ordenCompra->save()) {
 
             

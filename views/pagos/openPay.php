@@ -17,7 +17,7 @@ $date = date("Y-m-d",$date);
       <h5>Total a Pagar</h5>
       <span class="monto-total">$  <?=number_format($charger->amount)?></span>
       <span class="moneda">mxn</span>
-      <span class="comision">+  comisión</span>
+      <span class="comision">+ 8 pesos de comisión</span>
     </div>
 
     <div class="barcode">
