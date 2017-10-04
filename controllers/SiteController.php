@@ -202,7 +202,7 @@ class SiteController extends Controller
 
 
     public function actionProcesando($oc=null){
-        $ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$oc, 'b_pagado'=>0])->one();
+        $ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$oc, 'b_pagado'=>1])->one();
 
         if(empty($ordenCompra)){
             return $this->render('procesando-pago',  ['oc'=>$oc]);
