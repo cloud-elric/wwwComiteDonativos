@@ -1,7 +1,15 @@
-Pago se esta procesando
+<section class="donativos-wrapper">
+    <div class="container-full">
+        <div class="login-content">
+            <h3>Pago en proceso</h3>
+        </div>
+    </div>
+  </section>
+
 
 <script>
-setTimeout(function() {
+$(document).ready(function(){
+    setTimeout(function() {
     $.ajax({
         url: baseUrl+"site/verificar-pago?oc=<?=$oc?>",
         success: function(res){
@@ -11,5 +19,7 @@ setTimeout(function() {
         }
     });
 }, 5000);
+});
+
 
 </script>
