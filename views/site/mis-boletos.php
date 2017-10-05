@@ -1,7 +1,8 @@
 <section class="donativos-wrapper">
     <div class="container container-column container-full">
       <div class="boletos-content">
-        <h3>Estos son los boletos con los que podrás participar en la rifa</h3>
+        <h3>Gracias por tu donación para ayudar a reconstruir México</h3>
+        <h3>Martes 17 de octubre a las 8pm en transmisión en vivo anunciaremos a los ganadores de la rifa</h3>
         <?php
         foreach($boletos as $boleto){
         ?>
