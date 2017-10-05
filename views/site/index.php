@@ -35,7 +35,7 @@ $this->registerJsFile(
               <span class="currency">$</span>
               <span class="cantidad">500</span>
               <span class="moneda">mxn</span></div>
-            <a   class="btn btn-default btn-donativo js-select-amount <?=$ordenCompra->num_total==500?'btn-success':''?>"  data-value="200">Realizar Donativo</a>
+            <a   class="btn btn-default btn-donativo js-select-amount <?=$ordenCompra->num_total==500?'btn-success':''?>"  data-value="500">Realizar Donativo</a>
           </div>
           <div class="tarjeta">
             <div class="header">Donar</div>
