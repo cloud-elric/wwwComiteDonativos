@@ -30,4 +30,6 @@ $this->registerJsFile(
     </div>
   </section>
 
+  <div class="pago-pendiente" data-token="<?=$oc?>"></div>
+
 
