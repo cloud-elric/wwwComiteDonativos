@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    setTimeout(function() {
+    setInterval(function() {
     $.ajax({
         url: baseUrl+"site/verificar-pago?oc=<?=$oc?>",
         success: function(res){
