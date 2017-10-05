@@ -1,3 +1,11 @@
+<?php
+$this->registerJsFile(
+    '@web/webassets/js/procesando-pago.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+?>
+
+
 <style>
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -23,19 +31,3 @@
   </section>
 
 
-<script>
-$(document).ready(function(){
-    setTimeout(function() {
-    $.ajax({
-        url: baseUrl+"site/verificar-pago?oc=<?=$oc?>",
-        success: function(res){
-            if(res=="1"){
-                window.location.replace(baseUrl+"site/mis-boletos");
-            }
-        }
-    });
-}, 5000);
-});
-
-
-</script>
