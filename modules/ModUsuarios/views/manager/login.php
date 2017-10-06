@@ -127,14 +127,15 @@ window.fbAsyncInit = function() {
 <?php 
 } ?>
 <div class="login-content">
-	<h3>Antes de recibir tus donativos es necesario registrarte</h3>
+	<h3>Antes de que puedas apoyarnos con tu donativo registrate</h3>
 	<a type="button" class="btn btn-fb"
 				onClick="logInWithFacebook()" scope="<?= Yii::$app->params['modUsuarios']['facebook']['permisos'] ?>">
 		<i class="ion ion-social-facebook"></i><span>Iniciar Sesión con facebook</span>
 	</a>
     <span class="caption">
-		por cada 100 pesos que dones obtendrás un boleto para participar en la rifa de una experiencia MasterClass con algúno de los fotógrafos voluntarios
+	Por cada 100 pesos que dones, obtendrás un boleto para participar en una rifa con premios por parte de nuestros patrocinadores.
 	</span>
+	<div class="empresas-participantes"></div>
 </div>
 <div class="donativos-content"></div>
 
