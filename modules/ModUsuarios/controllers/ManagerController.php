@@ -197,7 +197,13 @@ class ManagerController extends Controller {
 		// }
 		
 		// Buscamos al usuario por email
-		$existUsuario = EntUsuarios::findByEmail ( $data ['profile'] ['email'] );
+		if(!isset($data ['profile'] ['email'])){
+			$correo = $data ['profile'] ['id']."@fbemail.com";
+			$data ['profile'] ['email'] = $correo;
+		}else{
+			$correo = $data ['profile'] ['email'];
+		}
+		$existUsuario = EntUsuarios::findByEmail ( $correo );
 		
 		// Si no existe creamos su cuenta
 		if (! $existUsuario) {

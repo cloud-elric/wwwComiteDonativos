@@ -329,7 +329,7 @@ class PagosController extends Controller
 					
 					$usuario = EntUsuarios::find()->where(['id_usuario'=>$ordenCompra->id_usuario])->one();
 
-					$numBoletos = $ordenCompra->num_total/100;
+					$numBoletos = intval($ordenCompra->num_total/100);
 					
 					for($i=0; $i<$numBoletos; $i++){
 						$boleto = new EntBoletos();
