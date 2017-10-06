@@ -9,6 +9,7 @@ $this->registerJsFile(
 );
 ?>
 <section class="donativos-wrapper">
+<a href="" class="btn btn-success btn-boletos">Mis Boletos</a>
     <div class="container container-full">
       <div class="donativos-content">
         <h3 class="title">Elige el monto con el cual desees colaborar</h3>
@@ -67,4 +68,5 @@ $this->registerJsFile(
         </div>
       </div>
     </div>
+    <footer class="not-absolute"><a class="sponsor" href="http://www.2geeksonemonkey.com">Desarrollo donado por 2 Geeks one Monkey</a></footer>
   </section> 

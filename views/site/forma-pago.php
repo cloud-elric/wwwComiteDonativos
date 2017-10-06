@@ -25,6 +25,7 @@ $this->registerJsFile(
 ?>
 
 <section class="donativos-wrapper">
+
   <div class="container container-column container-full">
     <div class="tipos-de-pago-content">
       <h3>Selecciona un tipo de pago</h3>
