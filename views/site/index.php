@@ -1,6 +1,7 @@
 <?php
 use yii\widgets\ActiveForm;
 use yii\bootstrap\Html;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 $this->title = 'Elegir monto a donar';
 $this->registerJsFile(
@@ -9,7 +10,7 @@ $this->registerJsFile(
 );
 ?>
 <section class="donativos-wrapper">
-<a href="" class="btn btn-success btn-boletos">Mis Boletos</a>
+<a href="<?=Url::base()?>/site/mis-boletos" class="btn btn-success btn-boletos">Mis Boletos</a>
     <div class="container container-full">
       <div class="donativos-content">
         <h3 class="title">Elige el monto con el cual desees colaborar</h3>
