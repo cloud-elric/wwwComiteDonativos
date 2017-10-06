@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <section class="donativos-wrapper">
 <a href="<?=Url::base()?>" class="btn btn-success btn-boletos">Inicio</a>
     <div class="container container-column container-full">
