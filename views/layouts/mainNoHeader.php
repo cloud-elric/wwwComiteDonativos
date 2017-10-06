@@ -49,7 +49,7 @@ AppAsset::register($this);
 
     <footer>
       <a class="sponsor" href="http://www.2geeksonemonkey.com">Desarrollo donado por 2 Geeks one Monkey</a>
-      <img src="webassets/images/2geeks-isotipo.png" alt="Desarrollo donado por 2 Geeks one Monkey">
+      <img src="webassets/images/2Geeks-isotipo.png" alt="Desarrollo donado por 2 Geeks one Monkey">
     </footer>
   </section>
 
