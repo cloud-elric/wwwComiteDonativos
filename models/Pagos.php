@@ -23,11 +23,11 @@ class Pagos {
 		
 		// $openpay = Openpay::getInstance ( 'mgvepau0yawr74pc5p5x', 'sk_b1885d10781b4a05838869f02c211d48' );
 		
-		// Para producción usar el que empieza con pk_ para pruebas el sk y
+		// Para producción usar el que empieza con sk_ para pruebas el pk y
 		
 		// para producción hay que cambiar el valor de la variable $sandboxMode a false en el archivo OpenpayApi.php
 		
-		$openpay = \Openpay::getInstance ( 'mgvepau0yawr74pc5p5x', 'sk_b1885d10781b4a05838869f02c211d48' );
+		$openpay = \Openpay::getInstance ( 'mxmzxkxphmwhz8hnbzu8', 'sk_a9c337fd308f4838854f422c802f4645' );
 		
 		$custom = array (
 				

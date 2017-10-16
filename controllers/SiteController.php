@@ -19,13 +19,13 @@ class SiteController extends Controller
     public function beforeAction($event)
     {
 
-        if(isset($_GET['monto'])){
-            $monto = $_GET['monto'];
-        }else{
-            $monto = 0;
-        }
-        $session = Yii::$app->session;
-        $session->set('monto', $monto);
+        // if(isset($_GET['monto'])){
+        //     $monto = $_GET['monto'];
+        // }else{
+        //     $monto = 0;
+        // }
+        // $session = Yii::$app->session;
+        // $session->set('monto', $monto);
         
         return parent::beforeAction($event);
     }
@@ -47,12 +47,12 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            // 'verbs' => [
+            //     'class' => VerbFilter::className(),
+            //     'actions' => [
+            //         //'logout' => ['post'],
+            //     ],
+            // ],
         ];
     }
 
@@ -79,12 +79,19 @@ class SiteController extends Controller
      */
     public function actionIndex($monto=0)
     {
+
+        if($monto<0){
+         $monto = $monto * -1;   
+        }
+
         $idUsuario = Yii::$app->user->identity->id_usuario;
         $ordenCompra = new EntOrdenesCompras();
         $ordenCompra->num_total = $monto;
         $ordenCompra->txt_order_number = Utils::generateToken("oc_");
         $ordenCompra->id_usuario = $idUsuario;
         $ordenCompra->txt_description = "Donativo";
+
+
         if ($ordenCompra->load(Yii::$app->request->post()) && $ordenCompra->save()) {
 
             
@@ -191,5 +198,27 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+
+    public function actionProcesando($oc=null){
+        $ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$oc, 'b_pagado'=>1])->one();
+
+        if(empty($ordenCompra)){
+            return $this->render('procesando-pago',  ['oc'=>$oc]);
+        }else{
+            return $this->redirect(["mis-boletos"]);
+        }
+
+    }
+
+    public function actionVerificarPago($oc=null){
+        $ordenCompra = EntOrdenesCompras::find()->where(['txt_order_number'=>$oc, 'b_pagado'=>1])->one();
+        
+                if(empty($ordenCompra)){
+                  echo "0";
+                }else{
+                    echo "1";
+                }
     }
 }

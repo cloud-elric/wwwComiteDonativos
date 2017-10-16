@@ -9,8 +9,8 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 
-$session = Yii::$app->session;
-$monto = $session->get('monto');;
+
+$monto = 0;
 
 if (Yii::$app->params['modUsuarios']['facebook']['usarLoginFacebook']) {
 	?>
@@ -52,7 +52,9 @@ function statusChangeCallback(response) {
 				
 			}else{
 				// Logged into your app and Facebook.
-				window.location.replace('<?= Yii::$app->params['modUsuarios']['facebook']['CALLBACK_URL'] ?>/<?= $monto ?>');
+				window.location.replace('<?= Yii::$app->params['modUsuarios']['facebook']['CALLBACK_URL'] ?>');
+				//$('#advanced_iframe').attr('src', url)
+				
 				//window.location.replace('http://notei.com.mx/test/wwwComiteConcursante/index.php/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
 //				window.location
 //						.replace('https://hazclicconmexico.comitefotomx.com/concursar/usrUsuarios/callbackFacebook/t/3c391e5c9feec1f95282a36bdd5d41ba');
@@ -125,14 +127,15 @@ window.fbAsyncInit = function() {
 <?php 
 } ?>
 <div class="login-content">
-	<h3>Antes de recibir tus donativos es necesario registrarte</h3>
+	<h3>Antes de que puedas apoyarnos con tu donativo registrate</h3>
 	<a type="button" class="btn btn-fb"
 				onClick="logInWithFacebook()" scope="<?= Yii::$app->params['modUsuarios']['facebook']['permisos'] ?>">
 		<i class="ion ion-social-facebook"></i><span>Iniciar Sesión con facebook</span>
 	</a>
     <span class="caption">
-		por cada 100 pesos que dones obtendrás un boleto para participar en la rifa de una experiencia MasterClass con algúno de los fotógrafos voluntarios
+	Por cada 100 pesos que dones, obtendrás un boleto para participar en una rifa con premios por parte de nuestros patrocinadores.
 	</span>
+	<div class="empresas-participantes"></div>
 </div>
 <div class="donativos-content"></div>
 

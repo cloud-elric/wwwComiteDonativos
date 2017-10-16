@@ -1,67 +1,21 @@
 $(document).ready(function(){
     
 
-    $('.js-print-button').on('click', function(e){
-        e.preventDefault();
+    window.addEventListener('resize', function () {
+		var windowWidth = $(window).width();
+		$('.screensize-tag').html(windowWidth + " px");
+	});
 
-        $('.tickert-print').printArea({
-            mode: 'iframe'
-        });
+	$('.print-btn').click(function (e){
+		e.preventDefault();
+		window.print();
+    });
+    
+    $('.close-modal').click(function(e){
+        $(".modal-ticket-op").addClass("modal-ticket-op-hide");
     });
 
-    console.log('aqui');
-
-
-      OpenPay.setId('mgvepau0yawr74pc5p5x');
-         OpenPay.setApiKey('pk_a4208044e7e4429090c369eae2f2efb3');
-            
-            OpenPay.setSandboxMode(true);
-            //Se genera el id de dispositivo
-            var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
-            
-            $('#pay-button').on('click', function(event) {
-                event.preventDefault();
-                $("#pay-button").prop( "disabled", true);
-                OpenPay.token.extractFormAndCreate('payment-form', sucess_callbak, error_callbak);                
-            });
-
-            var sucess_callbak = function(response) {
-                console.log(response);
-              var token_id = response.data.id;
-              $('#token_id').val(token_id);
-              var forma = $('#payment-form');
-			
-			$.ajax({
-				url: forma.attr("action"),
-				data:forma.serialize(),
-				method:"POST",
-				success: function(response){
-
-					if(response=="success"){
-                        $("#pay-button").prop("disabled", false);
-                        $('.lean-overlay').trigger('click');
-						swal("Correcto", "La compra se ha procesado correctamente", "success");
-                        
-					}else{
-						//toastrError(response);
-						$("#pay-button").prop( "disabled", false);
-					}
-				},error:function(){
-
-					}
-			});
-              
-            };
-
-            var error_callbak = function(response) {
-                var desc = response.data.description != undefined ? response.data.description : response.message;
-                
-                //alert("ERROR [" + response.status + "] " + desc);
-                swal("Un momento", 'Open pay rechazó el pago por: '+desc, "warning")
-                $("#pay-button").prop("disabled", false);
-            };
-
-        
+    
 
 
   });

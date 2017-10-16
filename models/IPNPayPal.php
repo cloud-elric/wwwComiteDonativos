@@ -260,7 +260,7 @@ class IPNPayPal {
 					}else{
 							$usuario = EntUsuarios::find()->where(['id_usuario'=>$ordenCompra->id_usuario])->one();
 
-							$numBoletos = $ordenCompra->num_total/100;
+							$numBoletos = intval($ordenCompra->num_total/100);
 
 							for($i=0; $i<$numBoletos; $i++){
 								$boleto = new EntBoletos();
@@ -284,7 +284,7 @@ class IPNPayPal {
 							'totalPagado'=>$ordenCompra->num_total
 					];
 				
-					$utils->sendPagoNotificacion($usuario->txt_email, $parametrosEmail );
+					//$utils->sendPagoNotificacion($usuario->txt_email, $parametrosEmail );
 					}
 				
 				

@@ -43,9 +43,14 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <section class="donativos-wrapper">
-    <div class="container container-full">
+    <div class="container-full">
     <?= $content ?>
     </div>
+
+    <footer>
+      <a class="sponsor" href="http://www.2geeksonemonkey.com">Desarrollo donado por 2 Geeks one Monkey</a>
+      <img src="webassets/images/2Geeks-isotipo.png" alt="Desarrollo donado por 2 Geeks one Monkey">
+    </footer>
   </section>
 
 <?php $this->endBody() ?>

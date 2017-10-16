@@ -122,7 +122,7 @@ class PagosController extends Controller
 				//$ordenCompra2 = $this->crearOrdenCompra($ordenCompra);
 
                 $charger =  $this->generarOrdenCompraOpenPay($ordenCompra1->txt_description, $ordenCompra1->txt_order_number, $ordenCompra1->num_total);
-                return $this->renderAjax('openPay', ['charger'=>$charger, 'ordenCompra'=>$ordenCompra, 'ordenCompra2'=>$ordenCompra2]);
+                return $this->renderAjax('openPay', ['charger'=>$charger, 'ordenCompra'=>$ordenCompra]);
             break;
 
         }
@@ -329,7 +329,7 @@ class PagosController extends Controller
 					
 					$usuario = EntUsuarios::find()->where(['id_usuario'=>$ordenCompra->id_usuario])->one();
 
-					$numBoletos = $ordenCompra->num_total/100;
+					$numBoletos = intval($ordenCompra->num_total/100);
 					
 					for($i=0; $i<$numBoletos; $i++){
 						$boleto = new EntBoletos();
@@ -354,7 +354,7 @@ class PagosController extends Controller
 							'totalPagado'=>$ordenCompra->num_total
 					];
 				
-					$utils->sendPagoNotificacion($usuario->txt_email, $parametrosEmail );
+					//$utils->sendPagoNotificacion($usuario->txt_email, $parametrosEmail );
 
 				}else{
 					$error = true;
