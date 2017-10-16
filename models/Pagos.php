@@ -64,7 +64,6 @@ class Pagos {
 	 * @return unknown
 	 */
 	public function createChargeCreditCard($description = null, $orderId = null, $amount = null, $tokenId=null, $deviceId=null) {
-
 		$this->alias = Yii::getAlias ( '@app' ) . '/vendor/openpay';
 		
 		require ($this->alias . DIRECTORY_SEPARATOR . 'Openpay.php');
